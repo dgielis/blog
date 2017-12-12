@@ -5,11 +5,28 @@ declare
   l_constraint varchar2(500);
 begin
   for t in (select t.table_name, 
-                   case when m.comments is not null then ' [' || replace(replace(replace(m.comments,'[','{'),']','}'),CHR(10)) ||']' end as comments 
-              from user_tables t, user_tab_comments m
+                   case when m.comments is not null then ' [' || replace(replace(replace(m.comments,'[','{'),']','}'),CHR(10)) ||']' end as comments
+              from user_tables t, user_tab_comments m,                                       
+                   (select max(lvl) as lvl, table_name
+                      from 
+                      (select level as lvl, table_name, rpad('_', (level-1)*2, '_') || table_name as tbl 
+                        from (
+                          select a.table_name, a.constraint_name pkey_constraint, b.constraint_name fkey_constraint, b.r_constraint_name 
+                            from user_constraints a, user_constraints b 
+                          where a.table_name = b.table_name (+)
+                            and a.constraint_type = 'P' 
+                            and b.constraint_type (+) = 'R' 
+                            and a.table_name like l_prefix || '%'
+                        )
+                        start with fkey_constraint is null 
+                        connect by prior pkey_constraint = r_constraint_name 
+                      )
+                     group by table_name  
+                   ) o 
              where t.table_name = m.table_name (+)
+               and t.table_name = o.table_name (+)
                and t.table_name like l_prefix || '%'
-             order by t.table_name
+             order by o.lvl, t.table_name 
            )
   loop
     sys.htp.prn(l_enter || l_enter || lower(replace(t.table_name,l_prefix||'_')) || t.comments );
