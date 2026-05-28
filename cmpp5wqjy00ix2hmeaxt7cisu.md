@@ -3,6 +3,7 @@ title: "Upgrade APEX 24.1 app to APEX 26.1"
 datePublished: 2026-05-28T07:19:08.399Z
 cuid: cmpp5wqjy00ix2hmeaxt7cisu
 slug: upgrade-apex-24-1-app-to-apex-26-1
+cover: https://cdn.hashnode.com/uploads/covers/62cf5116466c6ad9ff5d7d6e/f97add6e-1f53-49a4-87a6-65b5d5cb965d.png
 tags: orclapex
 
 ---
