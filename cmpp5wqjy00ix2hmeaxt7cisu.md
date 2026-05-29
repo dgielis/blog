@@ -38,7 +38,7 @@ Here's an example of an old component, a tabular form, which has a derived colum
 
 ![](https://cdn.hashnode.com/uploads/covers/62cf5116466c6ad9ff5d7d6e/74897524-4494-4f7a-8b91-0182ecdf5165.png align="center")
 
-There are a couple other things you can check, for example in Shared Components > User Interfaces check the JavaScript section to not include the deprecated JavaScript functions.
+There are a couple other things you can check, for example in Shared Components > User Interfaces check the JavaScript section to not include the deprecated JavaScript functions. Check the security attributes for session state protection and the used hash value.
 
 Once the above is done, try to export your app in APEXlang format.
 
@@ -54,6 +54,8 @@ Now the question is why? In short, I tried two methods; debug my own session, bu
 So there is a meta-data issue in my APEX app. APEX 26.1 was a major rewrite, where a lot of the meta-data got changed, for example default values and static ids are now consistant and components have strict structures. The above error I consider a bug and should be addressed by Oracle, because we as developers have no idea what is wrong. You should report these issues to the APEX dev team. I debugged this issue myself and it turned out that in one of my Authentication Schemes a default value was not set, but there was no way for me to change it in the builder.
 
 ![](https://cdn.hashnode.com/uploads/covers/62cf5116466c6ad9ff5d7d6e/f30be24a-e692-4d20-8f59-6164863e049c.png align="center")
+
+Edit 29-MAY-2026: Patrick Wolf told me it's not an incorrect default value, but the authentication scheme “Oracle Application Server Single Sign-On” (NATIVE\_IAS\_SSO) is really old and no longer available. 
 
 I consider this a rare issue. To get around the issue, I exported my app in SQL format, opened the sql file in VS Code, searched for the Authentication scheme and removed the code.
 
@@ -75,7 +77,8 @@ So, lets move on and validate our APEX app. In SQLcl, you can run the apex valid
 
 And as expected, I have some things to fix.
 
-The easiest way for me to fix was just tell Claude to fix the issue for me.
+The easiest way for me to fix was just tell Claude to fix the issue for me.  
+Edit 29-MAY-2026: Patrick Wolf told me it's better to remove the custom results template entirely instead of adding an empty template.
 
 ![](https://cdn.hashnode.com/uploads/covers/62cf5116466c6ad9ff5d7d6e/5f16ea73-c381-43be-9aa7-ac56a5231c54.png align="center")
 
