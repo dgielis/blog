@@ -55,7 +55,7 @@ So there is a meta-data issue in my APEX app. APEX 26.1 was a major rewrite, whe
 
 ![](https://cdn.hashnode.com/uploads/covers/62cf5116466c6ad9ff5d7d6e/f30be24a-e692-4d20-8f59-6164863e049c.png align="center")
 
-Edit 29-MAY-2026: Patrick Wolf told me it's not an incorrect default value, but the authentication scheme “Oracle Application Server Single Sign-On” (NATIVE\_IAS\_SSO) is really old and no longer available. 
+Edit 29-MAY-2026: Patrick Wolf told me it's not really an incorrect default value, but the authentication scheme “Oracle Application Server Single Sign-On” (NATIVE\_IAS\_SSO) is really old and no longer available. 
 
 I consider this a rare issue. To get around the issue, I exported my app in SQL format, opened the sql file in VS Code, searched for the Authentication scheme and removed the code.
 
