@@ -77,14 +77,15 @@ So, lets move on and validate our APEX app. In SQLcl, you can run the apex valid
 
 And as expected, I have some things to fix.
 
-The easiest way for me to fix was just tell Claude to fix the issue for me.  
-Edit 29-MAY-2026: Patrick Wolf told me it's better to remove the custom results template entirely instead of adding an empty template.
+The easiest way for me to fix was just tell Claude to fix the issue for me.
 
 ![](https://cdn.hashnode.com/uploads/covers/62cf5116466c6ad9ff5d7d6e/5f16ea73-c381-43be-9aa7-ac56a5231c54.png align="center")
 
 If you use Git, it's easy to see what was changed, either in VS Code or for example in GitHub Desktop
 
 ![](https://cdn.hashnode.com/uploads/covers/62cf5116466c6ad9ff5d7d6e/7667adeb-add8-4d46-8107-1f4a41cd8cf8.png align="center")
+
+Edit 29-MAY-2026: Patrick Wolf told me it's better to remove the custom results template entirely instead of adding an empty template.
 
 After that I validated the app and validation was successful, but now I got some warnings. Those we will fix later. In case you want to know more about the validation with APEXlang, Steve Muench did a good [blog post](https://diveintoapex.com/2026/05/19/mending-metadata-mismatches/).
 
